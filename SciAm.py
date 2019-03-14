@@ -9,9 +9,6 @@ import time
 import html
 import urllib.request as u
 
-#from html.parser import HTMLParser
-
-#from bs4 import BeautifulSoup
 class SciA():
     url = ''
     def __init__(self, url):
@@ -20,20 +17,19 @@ class SciA():
         #f.write(self.html)
 
     def getLink(self):
+        print ("in progress...")
+        
         html=self.html
-        #print (html)
-        #reg=r'("https://flex.acast.com/www.scientificamerican.com/podcast/podcast.mp3\?fileId=.*?")'
         regAudioLink=r'"source":"(https://flex.acast.com/www.scientificamerican.com/podcast/podcast.mp3\?fileId=.*?)","mediaID":".*?","type":"audio","title":".*?"'
         regAudioLink = re.compile(regAudioLink)
-        link_list = re.findall(regAudioLink,html)   #List all newspage link
+        link_list = re.findall(regAudioLink,html)
         AudioLink = str(link_list[0])
-        #print (AudioLink)
+        
         return AudioLink
 
     def getAudio(self):
-        print ("On process...")
         audioLink = self.getLink()
-
+        
         #Audio name preparation:
         regTitle = r'"source":"https://flex.acast.com/www.scientificamerican.com/podcast/podcast.mp3\?fileId=.*?","mediaID":".*?","type":"audio","title":"(.*?)"'
         regTitle = re.compile(regTitle)
@@ -43,15 +39,12 @@ class SciA():
         #Download audio file:            
         audioPath='.\%s'%Title_audio
         u.urlretrieve(audioLink,audioPath)
-        print ("Audio download finished")
+        
         return Title
 
-
-        #Get Script
     def getScript(self):
         scriptTitle=self.getAudio()
         f=open("%s.log"%scriptTitle,'w', encoding="utf-8")
-        #<a href="https://www.scientificamerican.com/podcast/episode/busting-earth-bound-asteroids-bigger-job-than-we-thought/#transcripts-body" class="t_meta transcripts_link" aria-label="Busting Earth-Bound Asteroids Bigger Job Than We Thought transcript">Full Transcript</a>
         regScript=r'<br/><a href="(https://www.scientificamerican.com/podcast/episode/.*?/#transcripts-body)"'
         regScript = re.compile(regScript)
         scriptLink=str(re.findall(regScript,self.html)[0])
@@ -66,7 +59,6 @@ class SciA():
             p=p.replace("</a>","").replace("<em>","").replace("<\em>","")          
             p=html.unescape(p)
             f.write(p+"\n")
-        print ("Script compiling finished")
         f.close()
       
 if __name__ == '__main__':
@@ -74,5 +66,5 @@ if __name__ == '__main__':
     #File.getLink()
     #File.getAudio()
     File.getScript()   
-    print ("\ndone")
+    print ("\nfinished")
     time.sleep(3)
