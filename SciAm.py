@@ -37,7 +37,7 @@ class SciA():
         Title_audio=Title+".mp3"
 
         #Download audio file:            
-        audioPath='.\%s'%Title_audio
+        audioPath='%s'%Title_audio
         u.urlretrieve(audioLink,audioPath)
         
         return Title
