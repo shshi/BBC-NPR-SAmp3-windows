@@ -55,8 +55,10 @@ class SciA():
         psgList=re.findall(regPsg,scriptPage)
         for p in psgList:
             p=str(p)
+            #Delete matched string
             p=re.sub(r'<a.*?>', '', p)
-            p=p.replace("</a>","").replace("<em>","").replace("</em>","").replace("<p>","").replace("</p>","")          
+            p=p.replace("</a>","").replace("<em>","").replace("</em>","").replace("<p>","").replace("</p>","")
+            #Unescape html-specialized code
             p=html.unescape(p)
             f.write(p+"\n")
         f.close()
