@@ -56,7 +56,7 @@ class SciA():
         for p in psgList:
             p=str(p)
             p=re.sub(r'<a.*?>', '', p)
-            p=p.replace("</a>","").replace("<em>","").replace("<\em>","")          
+            p=p.replace("</a>","").replace("<em>","").replace("</em>","")          
             p=html.unescape(p)
             f.write(p+"\n")
         f.close()
