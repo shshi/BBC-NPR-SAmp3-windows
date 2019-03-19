@@ -70,5 +70,5 @@ if __name__ == '__main__':
     #File.getLink()
     #File.getAudio()
     File.getScript()   
-    print ("\nfinished")
+    print ("finished")
     time.sleep(3)
