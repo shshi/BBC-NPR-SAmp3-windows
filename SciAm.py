@@ -61,6 +61,8 @@ class SciA():
             #Unescape html-specialized code
             p=html.unescape(p)
             f.write(p+"\n")
+            if 'The above text is a transcript of this podcast'in p:
+                break
         f.close()
       
 if __name__ == '__main__':
