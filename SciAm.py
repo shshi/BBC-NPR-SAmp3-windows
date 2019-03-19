@@ -60,7 +60,7 @@ class SciA():
             p=p.replace("</a>","").replace("<em>","").replace("</em>","").replace("<p>","").replace("</p>","")
             #Unescape html-specialized code
             p=html.unescape(p)
-            f.write(p+"\n")
+            f.write(p+"\n\n")
             if 'The above text is a transcript of this podcast'in p:
                 break
         f.close()
