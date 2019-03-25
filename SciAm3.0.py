@@ -33,7 +33,7 @@ class SciA():
         #count: downloaded size of block; block_size: size of block; total_size: size of file
         _output=sys.stdout
         #print (count, block_size, total_size)  
-        _output.write(f'\rcomplete percent: %d%%' %(100.0 * count * block_size/ total_size))
+        _output.write(f'\rprogress: %d%%' %(100.0 * count * block_size/ total_size))
 
     def getAudio(self):
         audioLink = self.getLink()
