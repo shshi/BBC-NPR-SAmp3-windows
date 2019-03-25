@@ -41,7 +41,8 @@ class SciA():
         #Audio name preparation:
         regTitle = r'"source":"https://flex.acast.com/www.scientificamerican.com/podcast/podcast.mp3\?fileId=.*?","mediaID":".*?","type":"audio","title":"(.*?)"'
         regTitle = re.compile(regTitle)
-        Title = str(re.findall(regTitle,self.html)[0]).replace(" ","_")
+        #Title = str(re.findall(regTitle,self.html)[0]).replace(" ","_")
+        Title = str(re.findall(regTitle,self.html)[0])
         Title_audio=Title+".mp3"
 
         #Download audio file:            
