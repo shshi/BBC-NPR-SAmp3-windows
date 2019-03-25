@@ -19,7 +19,7 @@ class SciA():
         #f.write(self.html)
 
     def getLink(self):
-        #print ("in progress...")
+        print ("initiating...")
         
         html=self.html
         regAudioLink=r'"source":"(https://flex.acast.com/www.scientificamerican.com/podcast/podcast.mp3\?fileId=.*?)","mediaID":".*?","type":"audio","title":".*?"'
