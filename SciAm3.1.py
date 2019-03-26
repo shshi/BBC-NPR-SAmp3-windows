@@ -45,7 +45,6 @@ class SciA():
         Title = str(re.findall(regTitle,self.html)[0])
         illegal_str=['?', '*', ':', '"', '<', '>', '\\', '/', '|']
         if any(x in Title for x in illegal_str):
-            #Title="No Title"
             regTitle=r'<br/><a href="https://www.scientificamerican.com/podcast/episode/(.*?)/#transcripts-body"'
             regTitle = re.compile(regTitle)
             Title=str(re.findall(regTitle,self.html)[0])
