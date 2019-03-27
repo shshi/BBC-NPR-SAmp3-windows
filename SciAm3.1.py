@@ -26,6 +26,7 @@ class SciA():
         regAudioLink = re.compile(regAudioLink)
         link_list = re.findall(regAudioLink,html)
         AudioLink = str(link_list[0])
+        #print (AudioLink)
         
         return AudioLink
 
@@ -54,10 +55,14 @@ class SciA():
         audioPath='%s'%Title_audio
         u.urlretrieve(audioLink, audioPath, reporthook=self.report_hook)
         
-        return Title
+        return audioLink, Title
 
     def getScript(self):
-        scriptTitle=self.getAudio()
+        audio_n_title = self.getAudio()
+        #print (audio_n_title)
+        audioLink=audio_n_title[0]
+        scriptTitle=audio_n_title[1]
+        
         f=open("%s.log"%scriptTitle,'w', encoding="utf-8")
         f.write("Title: "+scriptTitle+"\n\n")
         regScript=r'<br/><a href="(https://www.scientificamerican.com/podcast/episode/.*?/#transcripts-body)"'
@@ -79,7 +84,8 @@ class SciA():
             f.write(p+"\n\n")
             if 'The above text is a transcript of this podcast'in p:
                 break
-        f.write('Script link: %s'%scriptLink)
+        f.write('Script link: %s\n'%scriptLink)
+        f.write('Audio link: %s'%audioLink)
         f.close()
       
 if __name__ == '__main__':
