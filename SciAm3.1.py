@@ -58,11 +58,8 @@ class SciA():
         return audioLink, Title
 
     def getScript(self):
-        audio_n_title = self.getAudio()
-        #print (audio_n_title)
-        audioLink=audio_n_title[0]
-        scriptTitle=audio_n_title[1]
-        
+        (audioLink, scriptTitle)= self.getAudio()
+
         f=open("%s.log"%scriptTitle,'w', encoding="utf-8")
         f.write("Title: "+scriptTitle+"\n\n")
         regScript=r'<br/><a href="(https://www.scientificamerican.com/podcast/episode/.*?/#transcripts-body)"'
